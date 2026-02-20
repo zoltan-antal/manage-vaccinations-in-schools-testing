@@ -118,3 +118,12 @@ def set_site_for_child_list(file_path: Path, site_identifier: str) -> Path:
     new_file_path = file_path.with_stem(file_path.stem + f"withsite{site_identifier}")
     _file_df.to_csv(new_file_path, index=False)
     return new_file_path
+
+
+def set_first_name_for_child_list(file_path: Path, first_name: str) -> Path:
+    _file_df = pd.read_csv(file_path)
+    _file_df["CHILD_FIRST_NAME"] = first_name
+
+    new_file_path = file_path.with_stem(file_path.stem + "with_different_first_name")
+    _file_df.to_csv(new_file_path, index=False)
+    return new_file_path
